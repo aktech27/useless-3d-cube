@@ -7,8 +7,8 @@ body {
 }
 
 .cube {
-  height: 200px;
-  width: 200px;
+  aspect-ratio: 1;
+  width: min(200px, 30vw);
   background-color: transparent;
 }
 .container {
@@ -61,7 +61,7 @@ body {
 .face {
   background-color: white;
   opacity: 1;
-  transform: translateZ(200px) scale(0);
+  transform: translateZ(0) scale(0);
   animation: moveforward 1s 3s ease forwards, turnopacity 2s 4.2s ease infinite alternate;
 }
 
@@ -87,7 +87,7 @@ body {
 }
 @keyframes moveforward {
   to {
-    transform: translateZ(200px) scale(1);
+    transform: translateZ(min(200px, 30vw)) scale(1);
   }
 }
 
