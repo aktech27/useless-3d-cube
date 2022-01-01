@@ -1,0 +1,137 @@
+body {
+  background-color: lightblue;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube {
+  height: 200px;
+  width: 200px;
+  background-color: transparent;
+}
+.container {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  transform: rotateX(0deg) rotateY(0deg);
+  animation: perspec 6s 5.1s ease forwards, rotatecube 15s 5s linear infinite;
+}
+.side {
+  position: absolute;
+}
+.back {
+  background-color: yellow;
+  opacity: 1;
+  animation: turnopacity 2s 4.2s ease infinite alternate;
+}
+.right {
+  background-color: red;
+  opacity: 1;
+  transform: translateX(0) rotateY(-0deg);
+  transform-origin: left;
+  animation: moveright 1s ease forwards, rotateright 1s 2s ease forwards,
+    turnopacity 2s 4.2s ease infinite alternate;
+}
+.left {
+  background-color: orange;
+  opacity: 1;
+  transform: translateX(0) rotateY(0deg);
+  transform-origin: right;
+  animation: moveleft 1s 0.2s ease forwards, rotateleft 1s 2.2s ease forwards,
+    turnopacity 2s 4.2s ease infinite alternate;
+}
+.down {
+  background-color: blue;
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+  transform-origin: top;
+  animation: movedown 1s 0.4s ease forwards, rotatedown 1s 2.4s ease forwards,
+    turnopacity 2s 4.2s ease infinite alternate;
+}
+.up {
+  background-color: green;
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+  transform-origin: bottom;
+  animation: moveup 1s 0.6s ease forwards, rotateup 1s 2.6s ease forwards,
+    turnopacity 2s 4.2s ease infinite alternate;
+}
+.face {
+  background-color: white;
+  opacity: 1;
+  transform: translateZ(200px) scale(0);
+  animation: moveforward 1s 3s ease forwards, turnopacity 2s 4.2s ease infinite alternate;
+}
+
+@keyframes moveup {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes movedown {
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes moveright {
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes moveleft {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes moveforward {
+  to {
+    transform: translateZ(200px) scale(1);
+  }
+}
+
+@keyframes rotateup {
+  to {
+    transform: translateY(-100%) rotateX(-90deg);
+  }
+}
+@keyframes rotatedown {
+  to {
+    transform: translateY(100%) rotateX(90deg);
+  }
+}
+@keyframes rotateright {
+  to {
+    transform: translateX(100%) rotateY(-90deg);
+  }
+}
+@keyframes rotateleft {
+  to {
+    transform: translateX(-100%) rotateY(90deg);
+  }
+}
+@keyframes turnopacity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes rotatecube {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(90deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
+  }
+}
+@keyframes perspec {
+  to {
+    perspective: 50000px;
+  }
+}
